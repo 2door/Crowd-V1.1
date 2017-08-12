@@ -15,6 +15,7 @@ public class CrowdManager : MonoBehaviour {
 	//public GameObject sec;
 
 	void Start () {
+		print(gameObject.name);
 		//calculate spawn coords for fans
 		for(int i=0; i<22; i++) {
 			spawnPointsX[i] = i*2 - 21;
@@ -36,18 +37,18 @@ public class CrowdManager : MonoBehaviour {
 		//should be 0-21 for full public gen
 		for(int i=1; i<22; i++) {
 			for(int j=1; j<22; j++) {
-				if(! ( (i==11 || i==12)&&(j==11 || j==12) ) ) {
+				//if(! ( (i==11 || i==12)&&(j==11 || j==12) ) ) {
 					if(i == playerX && j == playerZ) {
 						Instantiate(player, new Vector3(spawnPointsX[i],
 								0.0f, spawnPointsZ[j]), Quaternion.identity);
 					} else if(i == friendsX && j == friendsZ) {
-						Instantiate(friends, new Vector3(spawnPointsX[i],
-								0.0f, spawnPointsZ[j]), Quaternion.identity);
+						Instantiate(friends, new Vector3(spawnPointsX[i] + 4.5f,
+								0.0f, spawnPointsZ[j] - 4.5f), Quaternion.identity);
 					} else {
 						Instantiate(fan, new Vector3(spawnPointsX[i],
 								0.0f, spawnPointsZ[j]), Quaternion.identity);
 					}
-				}
+				//}
 			}
 		}
 	}
