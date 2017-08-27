@@ -14,7 +14,7 @@ public class BeerScript : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider coll) {
-		//decrease beer in cups on frontal collision
+		//decrease beer in cup on frontal collision
 		if(coll.gameObject.tag == "Fan") {
 			quantity -= 0.3f;
 		}
