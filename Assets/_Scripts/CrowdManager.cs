@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Be aware that at the moment barZ is actually its Y
+ * and barY is actually its Z. Could have avoided confusion
+ * and will change but will leave like this for now as
+ * it is working and will not be ued again plus other higher
+ * priorities.
+ */
 public class CrowdManager : MonoBehaviour {
 
 	//store coordinates for NPC spawn points
@@ -14,10 +21,10 @@ public class CrowdManager : MonoBehaviour {
 	private Vector3 friendsPos;
 	//as seen from above, Z pointing to right
 	public const float TOP = -15.39f;
-	public const float RIGHT = 2;	
+	public const float RIGHT = 14.851f;	
 	public const float BOTTOM = 14.851f;
-	public const float LEFT = 4;
-	private const float barZ = 3.681025f;	//Z coord of the bar
+	public const float LEFT = -15.39f;
+	private const float barZ = 3.681025f;
 	//public GameObject thug;
 	//public GameObject sec;
 
@@ -30,25 +37,29 @@ public class CrowdManager : MonoBehaviour {
 
 	//function to randomly place bar on one of the walls at some location
 	private void genBar() {
-		int barWall = Random.Range(1, 4);
+		int barWall = Random.Range(1, 5);
 		float barX;
 		float barY;
 		if (barWall == 1) {
+			Debug.Log("TOP");
 			barX = TOP;
 			barY = Random.Range(-20.46f, 17.27f);
 			Instantiate(bar, new Vector3(barX, barZ, barY), Quaternion.identity);
 		} else if (barWall == 2) {
-			barX = TOP;
-			barY = Random.Range(-20.46f, 17.27f);
-			Instantiate(bar, new Vector3(barX, barZ, barY), Quaternion.identity);			
+			Debug.Log("RIGHT");			
+			barX = Random.Range(-20.46f, 17.27f);
+			barY = RIGHT;
+			Instantiate(bar, new Vector3(barX, barZ, barY), Quaternion.Euler(0, 90, 0));			
 		} else if (barWall == 3) {
+			Debug.Log("BOTTOM");
 			barX = BOTTOM;
 			barY = Random.Range(-20.46f, 17.27f);
 			Instantiate(bar, new Vector3(barX, barZ, barY), Quaternion.Euler(0, 180, 0));			
 		} else {
-			barX = BOTTOM;
-			barY = Random.Range(-20.46f, 17.27f);
-			Instantiate(bar, new Vector3(barX, barZ, barY), Quaternion.Euler(0, 180, 0));			
+			Debug.Log("LEFT");
+			barX = Random.Range(-20.46f, 17.27f);
+			barY = LEFT;
+			Instantiate(bar, new Vector3(barX, barZ, barY), Quaternion.Euler(0, -90, 0));			
 		}
 	}
 
@@ -74,8 +85,8 @@ public class CrowdManager : MonoBehaviour {
 		}
 
 		//should be 0-21 for full public gen
-		for(int i=1; i<22; i++) {
-			for(int j=1; j<22; j++) {
+		for(int i=0; i<22; i++) {
+			for(int j=0; j<22; j++) {
 				//if(! ( (i==11 || i==12)&&(j==11 || j==12) ) ) {
 					if(i == playerX && j == playerZ) {
 						Instantiate(player, new Vector3(spawnPointsX[i],
