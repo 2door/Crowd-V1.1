@@ -28,6 +28,7 @@ public class CrowdManager : MonoBehaviour {
 		genCrowd();
 	}
 
+	//function to randomly place bar on one of the walls at some location
 	private void genBar() {
 		int barWall = Random.Range(1, 4);
 		float barX;
