@@ -22,7 +22,7 @@ public class CrowdManager : MonoBehaviour {
 	float barZ;
 	public const float TOP = -15.39f;
 	public const float RIGHT = 14.851f;	
-	public const float BOTTOM = 14.851f;
+	public const float BOTTOM = 14.93f;
 	public const float LEFT = -15.39f;
 	private const float barY = 3.681025f;
 	//public GameObject thug;
@@ -51,11 +51,11 @@ public class CrowdManager : MonoBehaviour {
 		} else if (barWall == 3) {
 			Debug.Log("BOTTOM");
 			barX = BOTTOM;
-			barZ = Random.Range(-20.46f, 17.27f);
+			barZ = Random.Range(-17.27f, 20.46f);
 			Instantiate(bar, new Vector3(barX, barY, barZ), Quaternion.Euler(0, 180, 0));			
 		} else {
 			Debug.Log("LEFT");
-			barX = Random.Range(-20.46f, 17.27f);
+			barX = Random.Range(-17.27f, 20.46f);
 			barZ = LEFT;
 			Instantiate(bar, new Vector3(barX, barY, barZ), Quaternion.Euler(0, -90, 0));			
 		}
@@ -88,29 +88,57 @@ public class CrowdManager : MonoBehaviour {
 				//if(! ( (i==11 || i==12)&&(j==11 || j==12) ) ) {
 					if(i == playerX && j == playerZ) {
 						Instantiate(player, new Vector3(spawnPointsX[i],
-								0.0f, spawnPointsZ[j]), Quaternion.identity);	
+								0.0f, spawnPointsZ[j]), Quaternion.Euler(0, 
+									Random.Range(-180.0f, 180.0f), 0));
 					}else if(i == friendsX && j == friendsZ) {
 						Instantiate(friends, new Vector3(spawnPointsX[i] + 4.5f,
 								0.0f, spawnPointsZ[j] - 4.5f), Quaternion.identity);
 					} else {
-						if(barWall == 1 || barWall == 3) {
-							//on TOP or BOTTOM
-							if(j < barZ-3 || j > barZ+3) {
+						if(barWall == 1) {
+							//on TOP
+							if(i == 0) {
+								if(spawnPointsZ[j] < barZ-2.4 || spawnPointsZ[j] > barZ+5.2) {
+									Instantiate(fan, new Vector3(spawnPointsX[i],
+										0.0f, spawnPointsZ[j]), Quaternion.identity);
+								}
+							} else {
 								Instantiate(fan, new Vector3(spawnPointsX[i],
 									0.0f, spawnPointsZ[j]), Quaternion.identity);
+							}
+						} else if(barWall == 2) {
+							//on RIGHT
+								if(j == 21) {
+									if(spawnPointsX[i] < barX-2.4 || spawnPointsX[i] > barX+5.2) {
+										Instantiate(fan, new Vector3(spawnPointsX[i],
+											0.0f, spawnPointsZ[j]), Quaternion.identity);
+									}
+								} else {
+								Instantiate(fan, new Vector3(spawnPointsX[i],
+									0.0f, spawnPointsZ[j]), Quaternion.identity);
+							}
+						} else if(barWall == 3) {
+							//on BOTTOM
+							if(i == 21) {
+								if(spawnPointsZ[j] < barZ-5.2 || spawnPointsZ[j] > barZ+2.4) {
+									Instantiate(fan, new Vector3(spawnPointsX[i],
+										0.0f, spawnPointsZ[j]), Quaternion.identity);
+								}
 							} else {
-								Debug.Log("j=" + j + " and barZ=" + barZ);								
+								Instantiate(fan, new Vector3(spawnPointsX[i],
+									0.0f, spawnPointsZ[j]), Quaternion.identity);
 							}
 						} else {
-							//on LEFT or RIGHT
-							if(i < barX-3 || i > barX+3) {
+							//on LEFT
+							if(j == 0) {
+								if(spawnPointsX[i] < barX-5.2 || spawnPointsX[i] > barX+2.4) {
+									Instantiate(fan, new Vector3(spawnPointsX[i],
+										0.0f, spawnPointsZ[j]), Quaternion.identity);
+								}
+							} else {
 								Instantiate(fan, new Vector3(spawnPointsX[i],
 									0.0f, spawnPointsZ[j]), Quaternion.identity);
-							} else {
-								Debug.Log("i=" + i + " and barX=" + barX);								
 							}
 						}
-						
 					}
 				//}
 			}
