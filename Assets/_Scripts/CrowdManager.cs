@@ -98,50 +98,47 @@ public class CrowdManager : MonoBehaviour {
 							//on TOP
 							if(i == 0) {
 								if(spawnPointsZ[j] < barZ-2.4 || spawnPointsZ[j] > barZ+5.2) {
-									Instantiate(fan, new Vector3(spawnPointsX[i],
-										0.0f, spawnPointsZ[j]), Quaternion.identity);
+									makeFan(i, j);
 								}
 							} else {
-								Instantiate(fan, new Vector3(spawnPointsX[i],
-									0.0f, spawnPointsZ[j]), Quaternion.identity);
+								makeFan(i, j);
 							}
 						} else if(barWall == 2) {
 							//on RIGHT
 								if(j == 21) {
 									if(spawnPointsX[i] < barX-2.4 || spawnPointsX[i] > barX+5.2) {
-										Instantiate(fan, new Vector3(spawnPointsX[i],
-											0.0f, spawnPointsZ[j]), Quaternion.identity);
+										makeFan(i, j);
 									}
 								} else {
-								Instantiate(fan, new Vector3(spawnPointsX[i],
-									0.0f, spawnPointsZ[j]), Quaternion.identity);
+									makeFan(i, j);
 							}
 						} else if(barWall == 3) {
 							//on BOTTOM
 							if(i == 21) {
 								if(spawnPointsZ[j] < barZ-5.2 || spawnPointsZ[j] > barZ+2.4) {
-									Instantiate(fan, new Vector3(spawnPointsX[i],
-										0.0f, spawnPointsZ[j]), Quaternion.identity);
+									makeFan(i, j);
 								}
 							} else {
-								Instantiate(fan, new Vector3(spawnPointsX[i],
-									0.0f, spawnPointsZ[j]), Quaternion.identity);
+								makeFan(i, j);
 							}
 						} else {
 							//on LEFT
 							if(j == 0) {
 								if(spawnPointsX[i] < barX-5.2 || spawnPointsX[i] > barX+2.4) {
-									Instantiate(fan, new Vector3(spawnPointsX[i],
-										0.0f, spawnPointsZ[j]), Quaternion.identity);
+									makeFan(i, j);
 								}
 							} else {
-								Instantiate(fan, new Vector3(spawnPointsX[i],
-									0.0f, spawnPointsZ[j]), Quaternion.identity);
+								makeFan(i, j);
 							}
 						}
 					}
 				//}
 			}
 		}
+	}
+
+	private void makeFan(int i, int j) {
+		Instantiate(fan, new Vector3(spawnPointsX[i]+Random.Range(-0.7f, 0.7f),
+			0.0f, spawnPointsZ[j]+Random.Range(-0.7f, 0.7f)), Quaternion.identity);
 	}
 }
