@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
 	void Awake () {
 	    GetComponent<Rigidbody>().freezeRotation = true;
 	    GetComponent<Rigidbody>().useGravity = true;
+		transform.Find("Body").GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
 	}
  
 	void FixedUpdate () {
@@ -54,12 +55,13 @@ public class Player : MonoBehaviour {
 		}
 
 		if(won) {
-			Debug.Log("YOU WIN!");
+			Debug.Log("YOU WIN!");	//current way of keeping track of win
 		} 
 	}
 
 	void OnTriggerStay(Collider coll) {
-		if(coll.gameObject.name == "Bar" && !loaded) {
+		if(coll.gameObject.tag == "Bar" && !loaded) {
+			Debug.Log("Collision with Bar. Unloaded");
 			//player has arrived at bar for first time
 			loaded = true;
 			Beer = (Transform) Instantiate(Beer, new Vector3(0, 0, 0),
