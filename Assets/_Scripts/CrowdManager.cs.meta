@@ -1,13 +1,15 @@
 fileFormatVersion: 2
 guid: b0e0882ca7d99fd458c11e74e8192527
-timeCreated: 1502556716
+timeCreated: 1508343202
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
+  - bar: {fileID: 1000013121597342, guid: 940e16af6cb99b94082aa124a4ebbe72, type: 2}
   - fan: {fileID: 1000010920813134, guid: 41200dfb2ee8d3b48b3c95ba4654e0d0, type: 2}
   - player: {fileID: 1000012979675294, guid: f84bcaeea54529e45969de5257db9280, type: 2}
   - friends: {fileID: 1000010822161228, guid: d0c34e72a36a5cf42b2a80015e540b3a, type: 2}
+  - thug: {fileID: 1014026864523088, guid: 279948c905298d64e8d9da6266dcea7f, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

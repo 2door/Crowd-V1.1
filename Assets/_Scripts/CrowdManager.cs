@@ -14,6 +14,7 @@ public class CrowdManager : MonoBehaviour {
 	public GameObject fan;		//the Fan NPC prefab
 	public GameObject player;	//the player prefab
 	public GameObject friends;	//the friend group prefab
+	public GameObject thug;		//the thug NPC prefab
 	private Vector3 playerPos;
 	private Vector3 friendsPos;
 	//as seen from above, Z pointing to right
