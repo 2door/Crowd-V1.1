@@ -139,7 +139,7 @@ public class CrowdManager : MonoBehaviour {
 	}
 
 	private void makeFan(int i, int j) {
-		Instantiate(fan, new Vector3(spawnPointsX[i]+Random.Range(-0.7f, 0.7f),
-			0.0f, spawnPointsZ[j]+Random.Range(-0.7f, 0.7f)), Quaternion.identity);
+		Instantiate(fan, new Vector3(spawnPointsX[i]+Random.Range(-0.6f, 0.6f),
+			0.0f, spawnPointsZ[j]+Random.Range(-0.6f, 0.6f)), Quaternion.identity);
 	}
 }
