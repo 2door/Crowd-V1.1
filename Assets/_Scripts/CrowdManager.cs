@@ -18,15 +18,16 @@ public class CrowdManager : MonoBehaviour {
 	private Vector3 playerPos;
 	private Vector3 friendsPos;
 	//as seen from above, Z pointing to right
-	int barWall;
-	float barX;
-	float barZ;
+	private int barWall;
+	private float barX;
+	private float barZ;
+	public int thugFreq;	//frequency of thugh spawn
+	public int thugLimit;
 	public const float TOP = -15.39f;
 	public const float RIGHT = 14.851f;	
 	public const float BOTTOM = 14.93f;
 	public const float LEFT = -15.39f;
 	private const float barY = 3.681025f;
-	//public GameObject thug;
 	//public GameObject sec;
 
 	void Start () {
@@ -91,9 +92,9 @@ public class CrowdManager : MonoBehaviour {
 						Instantiate(player, new Vector3(spawnPointsX[i],
 								0.0f, spawnPointsZ[j]), Quaternion.Euler(0, 
 									Random.Range(-180.0f, 180.0f), 0));
-					}else if(i == friendsX && j == friendsZ) {
+					} else if(i == friendsX && j == friendsZ) {
 						Instantiate(friends, new Vector3(spawnPointsX[i] + 4.5f,
-								0.0f, spawnPointsZ[j] - 4.5f), Quaternion.identity);
+								-1.0f, spawnPointsZ[j] - 4.5f), Quaternion.identity);
 					} else {
 						if(barWall == 1) {
 							//on TOP
@@ -139,7 +140,13 @@ public class CrowdManager : MonoBehaviour {
 	}
 
 	private void makeFan(int i, int j) {
-		Instantiate(fan, new Vector3(spawnPointsX[i]+Random.Range(-0.6f, 0.6f),
-			0.0f, spawnPointsZ[j]+Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+		if( Random.Range(0, 200) == 0 && thugLimit != 0) {
+			Instantiate(thug, new Vector3(spawnPointsX[i],
+				0.8f, spawnPointsZ[j]), Quaternion.identity);
+			thugLimit--;
+		} else {
+			//Instantiate(fan, new Vector3(spawnPointsX[i]+Random.Range(-0.6f, 0.6f),
+			//	0.0f, spawnPointsZ[j]+Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+		}
 	}
 }
