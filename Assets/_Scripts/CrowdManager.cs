@@ -41,22 +41,18 @@ public class CrowdManager : MonoBehaviour {
 	private void genBar() {
 		barWall = Random.Range(1, 5);
 		if (barWall == 1) {
-			Debug.Log("TOP");
 			barX = TOP;
 			barZ = Random.Range(-20.46f, 17.27f);
 			Instantiate(bar, new Vector3(barX, barY, barZ), Quaternion.identity);
-		} else if (barWall == 2) {
-			Debug.Log("RIGHT");			
+		} else if (barWall == 2) {		
 			barX = Random.Range(-20.46f, 17.27f);
 			barZ = RIGHT;
 			Instantiate(bar, new Vector3(barX, barY, barZ), Quaternion.Euler(0, 90, 0));			
 		} else if (barWall == 3) {
-			Debug.Log("BOTTOM");
 			barX = BOTTOM;
 			barZ = Random.Range(-17.27f, 20.46f);
 			Instantiate(bar, new Vector3(barX, barY, barZ), Quaternion.Euler(0, 180, 0));			
 		} else {
-			Debug.Log("LEFT");
 			barX = Random.Range(-17.27f, 20.46f);
 			barZ = LEFT;
 			Instantiate(bar, new Vector3(barX, barY, barZ), Quaternion.Euler(0, -90, 0));			
@@ -145,8 +141,8 @@ public class CrowdManager : MonoBehaviour {
 				0.8f, spawnPointsZ[j]), Quaternion.identity);
 			thugLimit--;
 		} else {
-			//Instantiate(fan, new Vector3(spawnPointsX[i]+Random.Range(-0.6f, 0.6f),
-			//	0.0f, spawnPointsZ[j]+Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+			Instantiate(fan, new Vector3(spawnPointsX[i]+Random.Range(-0.6f, 0.6f),
+				0.0f, spawnPointsZ[j]+Random.Range(-0.6f, 0.6f)), Quaternion.identity);
 		}
 	}
 }

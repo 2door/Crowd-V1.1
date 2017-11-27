@@ -55,8 +55,11 @@
      <Compile Include="Assets\_Scripts\CrowdManager.cs" />
      <Compile Include="Assets\_Scripts\FanBehaviour.cs" />
      <Compile Include="Assets\_Scripts\FriendBehaviour.cs" />
+     <Compile Include="Assets\_Scripts\GameStateController.cs" />
+     <Compile Include="Assets\_Scripts\HUDBehaviour.cs" />
      <Compile Include="Assets\_Scripts\Player.cs" />
      <Compile Include="Assets\_Scripts\PlayerHead.cs" />
+     <Compile Include="Assets\_Scripts\SceneChanger.cs" />
      <Compile Include="Assets\_Scripts\ThugBehaviour.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
